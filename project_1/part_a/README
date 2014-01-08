@@ -1,0 +1,8 @@
+Name:  Georgi Baghdasaryan
+SID:   603 875 284
+Email: baghdasaryan@ucla.edu
+
+Extra stuff:
+  * Detection of division by zero using regular expressions.
+  * White spaces treated as empty characters.
+
