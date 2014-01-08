@@ -1,8 +1,8 @@
--- Populates previously created tables
+-- Contains SQL statements that populates data tables
 
--------------------
---  Load Values  --
--------------------
+-----------------
+--  Load Data  --
+-----------------
 LOAD DATA LOCAL INFILE '~/data/movie.del' INTO TABLE Movie FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE '~/data/actor1.del' INTO TABLE Actor FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE '~/data/actor2.del' INTO TABLE Actor FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
