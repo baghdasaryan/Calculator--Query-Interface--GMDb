@@ -7,7 +7,8 @@ CREATE TABLE Movie
   title VARCHAR(100),
   year INT,
   rating VARCHAR(10),
-  company VARCHAR(50)
+  company VARCHAR(50),
+  PRIMARY KEY(id)
 );
 
 -- Actor(id, last, first, sex, dob, dod)
@@ -18,7 +19,8 @@ CREATE TABLE Actor
   first VARCHAR(20),
   sex VARCHAR(6),
   dob DATE,
-  dod DATE
+  dod DATE,
+  PRIMARY KEY(id)
 );
 
 -- Director(id, last, first, dob, dod)
@@ -28,14 +30,15 @@ CREATE TABLE Director
   last VARCHAR(20),
   first VARCHAR(20),
   dob DATE,
-  dod DATE
+  dod DATE,
+  PRIMARY KEY(id)
 );
 
 -- MovieGenre(mid, genre)
 CREATE TABLE MovieGenre
 (
   mid INT,
-  genre VARCHAR(20)
+  genre VARCHAR(20),
 );
 
 -- MovieDirector(mid, did)
