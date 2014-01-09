@@ -8,7 +8,7 @@
     <h1>Web Query Interface</h1>
 
     <small>
-      (Ver 1.0 01/08/2014 by Georgi Baghdasaryan and Michael Sweatt)
+      (Ver 1.0 01/09/2014 by Georgi Baghdasaryan and Michael Sweatt)
     </small>
 
     <p>
@@ -29,51 +29,67 @@
     <?php
       $query =  $_GET["query"];
 
-      if($query == "") {
-      } else {
-        echo '<h3>Results from MySQL:</h3>' . PHP_EOL;
+      if($query != "") {
+        $err = false;
 
-        $db_connection = mysql_connect("localhost", "cs143", "");
-        if(!$db_connection) {
-          $errmsg = mysql_error($db_connection);
-          echo 'Connection failed: ' . $errmsg . '<br />';
-          exit(1);
+        if(!preg_match("/^(select\s|show\s)/i", $query)) {
+          echo 'Sorry, only SELECT and SHOW queries are allowed!';
+          $err = true;
         }
 
-        $db_selected = mysql_select_db("CS143", $db_connection);
-        if(!$db_selected) {
-          $errmsg = mysql_error($db_selected);
-          echo 'Failed to select a database: ' . $errmsg . '<br />';
-          exit(1);
+        if(!$err) {
+          echo '<h3>Results from MySQL:</h3>' . PHP_EOL;
+
+          $db_connection = mysql_connect("localhost", "cs143", "");
+          if(!$db_connection) {
+            $errmsg = mysql_error($db_connection);
+            echo 'Connection failed: ' . $errmsg;
+            $err = true;
+          }
         }
 
-        $result = mysql_query($query, $db_connection);
-        if(!$result) {
-          echo 'Could not run query: ' . $query . '<br />';
-          echo 'Error: ' . mysql_error() . '<br />';
-          exit(1);
+        if(!$err) {
+          $db_selected = mysql_select_db("CS143", $db_connection);
+          if(!$db_selected) {
+            $errmsg = mysql_error($db_selected);
+            echo 'Failed to select a database: ' . $errmsg;
+            $err = true;
+          }
         }
 
-        echo '<table border=1 cellspacing=1 cellpadding=2>' . PHP_EOL;
-
-        echo '<tr align=center>';
-
-        $numfields = mysql_num_fields($result);
-        for($i = 0; $i < $numfields; $i++) {
-          echo '<th>' . mysql_field_name($result, $i) . '</th>';
+        if(!$err) {
+          $result = mysql_query($query, $db_connection);
+          if(!$result) {
+            echo '<b>Query:</b> ' . $query . '<br />' . PHP_EOL;
+            echo mysql_error();
+            $err = true;
+          }
         }
-        echo '</tr>' . PHP_EOL;
 
-        while($row = mysql_fetch_row($result)) {
+        if(!$err) {
+          echo '<table border=1 cellspacing=1 cellpadding=2>' . PHP_EOL;
+
           echo '<tr align=center>';
-          foreach($row as $data) {
-            echo '<td>' . $data . '</td>';
+          $numfields = mysql_num_fields($result);
+          for($i = 0; $i < $numfields; $i++) {
+            echo '<th>' . mysql_field_name($result, $i) . '</th>';
           }
           echo '</tr>' . PHP_EOL;
-        }
-        echo '</table>' . PHP_EOL;
 
-        mysql_close($db_connection);
+          while($row = mysql_fetch_row($result)) {
+            echo '<tr align=center>';
+            foreach($row as $data) {
+              echo '<td>' . $data . '</td>';
+            }
+            echo '</tr>' . PHP_EOL;
+          }
+
+          echo '</table>' . PHP_EOL;
+        }
+
+        if($db_selected) {
+          mysql_close($db_connection);
+        }
       }
     ?>
 
