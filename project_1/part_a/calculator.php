@@ -1,13 +1,17 @@
 <html>
-  <head><title>Calculator</title></head>
+  <head>
+    <title>Calculator</title>
+  </head>
   <body>
 
     <h1>Calculator</h1>
 
-    (Ver 1.1 01/07/2014 by Georgi Baghdasaryan and Michael Sweatt)<br />
-    Type an expression in the following box (e.g., 10.5+20*3/25).
+    <small>
+      (Ver 1.0 01/08/2014 by Georgi Baghdasaryan and Michael Sweatt)
+    </small>
 
     <p>
+      Type an expression in the following box (e.g., 10.5+20*3/25).
       <form method="GET">
         <input type="text" name="expr">
         <input type="submit" value="Calculate">
@@ -29,7 +33,7 @@
       } else {
         $err = 0;
 
-        # replace space with empty character
+        # replace spaces with empty characters
         $expr = preg_replace("/ /", "", $expr);
         # replace -- with +
         $expr = preg_replace("/--/", "+", $expr);
