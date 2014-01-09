@@ -25,7 +25,7 @@
       <li>The calculator handles invalid input "gracefully". It does not output PHP error messages.
     </ul>
 
-    <?
+    <?php
       $expr = $_GET["expr"];
       $eqn = $expr;
 

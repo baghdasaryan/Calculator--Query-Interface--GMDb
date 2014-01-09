@@ -13,7 +13,7 @@
 
     <p>
       Type a SQL query in the following box:
-      <form action="." method="GET">
+      <form method="GET"> <!-- action="." -->
         <textarea name="query" cols="60" rows="8"></textarea>
         <input type="submit" value="Submit" />
       </form>
@@ -25,6 +25,16 @@
         the list of available tables.
       </small>
     </p>
+
+    <?php
+      $query =  $_GET["query"];
+
+      if($query == "") {
+      } else {
+        echo $query;
+      }
+    ?>
+
   </body>
 
 </html>
