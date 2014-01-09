@@ -31,7 +31,7 @@
 
       if($query == "") {
       } else {
-        echo '<h3>Results from MySQL:</h3>';
+        echo '<h3>Results from MySQL:</h3>' . PHP_EOL;
 
         $db_connection = mysql_connect("localhost", "cs143", "");
         if(!$db_connection) {
@@ -47,22 +47,31 @@
           exit(1);
         }
 
-        /*$result = mysql_query($query, $db_connection);
+        $result = mysql_query($query, $db_connection);
         if(!$result) {
           echo 'Could not run query: ' . $query . '<br />';
           echo 'Error: ' . mysql_error() . '<br />';
           exit(1);
-        }*/
-/*
-        while($row = mysql_fetch_row($rs)) {
-          $sid = $row[0];
-          $name = $row[1];
-          $email = $row[2];
-          print "$sid, $name, $email<br />";
         }
-*/
 
-        echo 'Query: ' . $query;
+        echo '<table border=1 cellspacing=1 cellpadding=2>' . PHP_EOL;
+
+        echo '<tr align=center>';
+
+        $numfields = mysql_num_fields($result);
+        for($i = 0; $i < $numfields; $i++) {
+          echo '<th>' . mysql_field_name($result, $i) . '</th>';
+        }
+        echo '</tr>' . PHP_EOL;
+
+        while($row = mysql_fetch_row($result)) {
+          echo '<tr align=center>';
+          foreach($row as $data) {
+            echo '<td>' . $data . '</td>';
+          }
+          echo '</tr>' . PHP_EOL;
+        }
+        echo '</table>' . PHP_EOL;
 
         mysql_close($db_connection);
       }
