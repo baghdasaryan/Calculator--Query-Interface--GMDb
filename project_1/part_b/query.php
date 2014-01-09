@@ -31,7 +31,18 @@
 
       if($query == "") {
       } else {
-        echo $query;
+
+        $db_connection = mysql_connect("localhost", "cs143", "");
+        if(!$db_connection) {
+          die('Could not connect to MySQL: ' . mysql_error());
+        }
+
+
+
+        echo "<h3>Results from MySQL:</h3>";
+        echo "Query: " . $query;
+
+        mysql_close($db_connection);
       }
     ?>
 
