@@ -35,11 +35,11 @@
 
         # replace spaces with empty characters
         $expr = preg_replace("/ /", "", $expr);
-        # replace -- with +
-        $expr = preg_replace("/--/", "+", $expr);
 
         # check for division by zero
         $div_zero = preg_match("/.*\/0+\.?0*($|[\+\-\*\/])/", $expr);
+        # replace -- with +
+        $expr = preg_replace("/--/", "+", $expr);
 
         # check that input is valid
         $err |= preg_match("/[()]/", $expr);
