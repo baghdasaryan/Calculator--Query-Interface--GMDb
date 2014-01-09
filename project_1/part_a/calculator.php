@@ -40,7 +40,7 @@
         # check that input is valid
         $err |= preg_match("/[()]/", $expr);
         $err |= preg_match("/[^0-9+\/\-\.\*]/", $expr);
-      
+
         echo "<h2>Result</h2>";
         if($err != 0 || $div_zero != 0) {
           if($div_zero == 0) {
@@ -51,7 +51,7 @@
         } else {
           $test = @eval("\$ans =" . $expr . "; return true;");
           if(!$test) {  # bad input if eval fails
-            echo "Invalid input expression2 " . $eqn . ".";
+            echo "Invalid input expression " . $eqn . ".";
           } else {
             echo $eqn . " = " . $ans;
           }
