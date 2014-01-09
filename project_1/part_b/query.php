@@ -31,16 +31,38 @@
 
       if($query == "") {
       } else {
+        echo '<h3>Results from MySQL:</h3>';
 
         $db_connection = mysql_connect("localhost", "cs143", "");
         if(!$db_connection) {
-          die('Could not connect to MySQL: ' . mysql_error());
+          $errmsg = mysql_error($db_connection);
+          echo 'Connection failed: ' . $errmsg . '<br />';
+          exit(1);
         }
 
+        $db_selected = mysql_select_db("CS143", $db_connection);
+        if(!$db_selected) {
+          $errmsg = mysql_error($db_selected);
+          echo 'Failed to select a database: ' . $errmsg . '<br />';
+          exit(1);
+        }
 
+        /*$result = mysql_query($query, $db_connection);
+        if(!$result) {
+          echo 'Could not run query: ' . $query . '<br />';
+          echo 'Error: ' . mysql_error() . '<br />';
+          exit(1);
+        }*/
+/*
+        while($row = mysql_fetch_row($rs)) {
+          $sid = $row[0];
+          $name = $row[1];
+          $email = $row[2];
+          print "$sid, $name, $email<br />";
+        }
+*/
 
-        echo "<h3>Results from MySQL:</h3>";
-        echo "Query: " . $query;
+        echo 'Query: ' . $query;
 
         mysql_close($db_connection);
       }
