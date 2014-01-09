@@ -4,7 +4,7 @@
 
     <h1>Calculator</h1>
 
-    (Ver 1.1 01/07/2014 by Georgi Baghdasaryan)<br />
+    (Ver 1.1 01/07/2014 by Georgi Baghdasaryan and Michael Sweatt)<br />
     Type an expression in the following box (e.g., 10.5+20*3/25).
 
     <p>
