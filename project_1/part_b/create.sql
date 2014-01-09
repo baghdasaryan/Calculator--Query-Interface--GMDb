@@ -1,7 +1,6 @@
--- Run these SQL commands to create all the necessary table for project 1
---   part A
+-- SQL commands used to create all the necessary tables for project 1
 
---
+-- Movie(id, title, year, rating, company)
 CREATE TABLE Movie
 (
   id INT,
@@ -11,7 +10,7 @@ CREATE TABLE Movie
   company VARCHAR(50)
 );
 
---
+-- Actor(id, last, first, sex, dob, dod)
 CREATE TABLE Actor
 (
   id INT,
@@ -22,7 +21,7 @@ CREATE TABLE Actor
   dod DATE
 );
 
---
+-- Director(id, last, first, dob, dod)
 CREATE TABLE Director
 (
   id INT,
@@ -32,21 +31,21 @@ CREATE TABLE Director
   dod DATE
 );
 
---
+-- MovieGenre(mid, genre)
 CREATE TABLE MovieGenre
 (
   mid INT,
   genre VARCHAR(20)
 );
 
---
+-- MovieDirector(mid, did)
 CREATE TABLE MovieDirector
 (
   mid INT,
   did INT
 );
 
---
+-- MovieActor(mid, aid, role)
 CREATE TABLE MovieActor
 (
   mid INT,
@@ -54,7 +53,7 @@ CREATE TABLE MovieActor
   role VARCHAR(50)
 );
 
---
+-- Review(name, time, mid, rating, comment)
 CREATE TABLE Review
 (
   name VARCHAR(20),
@@ -64,13 +63,13 @@ CREATE TABLE Review
   comment VARCHAR(500)
 );
 
---
+-- MaxPersonID(id)
 CREATE TABLE MaxPersonID
 (
   id INT
 );
 
---
+-- MaxMovieID(id)
 CREATE TABLE MaxMovieID
 (
   id INT
