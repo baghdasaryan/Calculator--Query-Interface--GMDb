@@ -16,6 +16,6 @@ LOAD DATA LOCAL INFILE '~/data/movieactor2.del' INTO TABLE MovieActor FIELDS TER
 ---------------------
 --  Insett Values  --
 ---------------------
-INSERT INTO MaxPersonID VALUES (6900);
+INSERT INTO MaxPersonID VALUES (69000);
 INSERT INTO MaxMovieID VALUES (4750);
 

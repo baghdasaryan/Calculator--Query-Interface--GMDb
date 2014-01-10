@@ -13,7 +13,7 @@
 
     <p>
       Type a SQL query in the following box:
-      <form method="GET"> <!-- action="." -->
+      <form action="" method="GET">
         <textarea name="query" cols="60" rows="8"></textarea>
         <input type="submit" value="Submit" />
       </form>
