@@ -14,7 +14,7 @@
     <p>
       Type a SQL query in the following box:
       <form action="" method="GET">
-        <textarea name="query" cols="60" rows="8"></textarea>
+        <textarea name="query" cols="60" rows="8"><?php echo $_GET["query"]; ?></textarea>
         <input type="submit" value="Submit" />
       </form>
     </p>
