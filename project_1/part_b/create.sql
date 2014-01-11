@@ -4,10 +4,10 @@
 CREATE TABLE Movie
 (
   id INT NOT NULL,
-  title VARCHAR(100) NOT NULL,  -- every movie must have a title
-  year INT NOT NULL,            -- every movie must have release year
+  title VARCHAR(100) NOT NULL,  -- Every movie must have a title
+  year INT NOT NULL,            -- Every movie must have release year
   rating VARCHAR(10),
-  company VARCHAR(50),
+  company VARCHAR(50) NOT NULL, -- Company is necessary
   PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
@@ -19,7 +19,7 @@ CREATE TABLE Actor
   first VARCHAR(20) NOT NULL,   -- Every actor must have a first name
   sex VARCHAR(6) NOT NULL,      -- Sex must be specified for every human being
   dob DATE NOT NULL,            -- Every person should have DOB
-  dod DATE,
+  dod DATE DEFAULT NULL,
   PRIMARY KEY(id),
   CHECK (sex IN ('Male', 'Female')),
   CHECK (dod IS NULL OR dob < dod)
@@ -32,7 +32,7 @@ CREATE TABLE Director
   last VARCHAR(20) NOT NULL,    -- Every actor must have a last name
   first VARCHAR(20) NOT NULL,   -- Every actor must have a first name
   dob DATE NOT NULL,            -- Every person should have DOB
-  dod DATE,
+  dod DATE DEFAULT NULL,
   PRIMARY KEY(id),
   CHECK (dod IS NULL OR dob < dod)
 ) ENGINE=INNODB;

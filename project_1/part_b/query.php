@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>CS143 Project 1B Demo</title>
+    <title>Web Query Interface</title>
   </head>
 
   <body>
@@ -13,7 +13,7 @@
 
     <p>
       Type a SQL query in the following box:
-      <form action="" method="GET">
+      <form action="./query.php" method="GET">
         <textarea name="query" cols="60" rows="8"><?php echo $_GET["query"]; ?></textarea>
         <input type="submit" value="Submit" />
       </form>
