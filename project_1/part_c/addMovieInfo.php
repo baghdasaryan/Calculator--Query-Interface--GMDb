@@ -1,6 +1,10 @@
 <html>
   <head>
     <title>GMDb - Movie Database</title>
+    <?php
+      include('./utils.php');
+      include('./dbBackend.php');
+    ?>
   </head>
 
   <body>
@@ -18,6 +22,22 @@
         </tr><tr>
           <td>Company:</td>
           <td><input type="text" name="company" maxlength="50" /></td>
+        </tr><tr>
+          <td>Director:</td>
+          <td>
+            <?php
+              $qResult = dbGetAllDirectors();
+              if($qResult["data"]) {
+                echo '<select name="director">' . PHP_EOL;
+                while($row = mysql_fetch_row($qResult["data"])) {
+                  echo '<option value="' . $row[0] . '">' . $row[1] . ' (' . $row[2] . ')' . '</option>' . PHP_EOL;
+                }
+                echo '</select>' . PHP_EOL;
+              } else {
+                $errors[] = $qResult["err"];
+              }
+            ?>
+          </td>
         </tr><tr>
           <td>MPAA Rating:</td>
           <td>
@@ -66,9 +86,20 @@
     </form>
 
     <?php
+      if(!empty($_GET)) {
+        $qResult = dbAddMovie($_GET);
+        if($qResult["data"]) {
+          echo "Success";
+        } else {
+          $errors[] = $qResult["err"];
+        }
+      } else {
+        // echo "Failure: no info";
+      }
 
-
-
+      if($errors) {
+        printErrors($errors);
+      }
     ?>
 
   </body>
