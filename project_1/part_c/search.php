@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>GMDb - Movie Database</title>
     <?php
+      include('./utils.php');
       include('./dbBackend.php');
     ?>
   </head>
@@ -22,9 +23,20 @@
     </form>
 
     <?php
+      if(!empty($_GET)) {
+        $qResult = dbSearch($_GET);
+        if($qResult["data"]) {
+          echo "Success";
+        } else {
+          $errors[] = $qResult["err"];
+        }
+      } else {
+        // echo "Failure: no info";
+      }
 
-
-
+      if($errors) {
+        printErrors($errors);
+      }
     ?>
 
   </body>
