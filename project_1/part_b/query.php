@@ -32,7 +32,7 @@
       if($query != "") {
         $err = false;
 
-        if(!preg_match("/^(select\s|show\s)/i", $query)) {
+        if(!preg_match("/^\s*(select\s|show\s)/i", $query)) {
           echo 'Sorry, only SELECT and SHOW queries are allowed!';
           $err = true;
         }
