@@ -28,7 +28,9 @@
         if($qResult["data"]) {
           echo "Success";
         } else {
-          $errors[] = $qResult["err"];
+          if(!empty($qResult["err"])) {
+            $errors[] = $qResult["err"];
+          }
         }
       } else {
         // echo "Failure: no info";

@@ -160,6 +160,27 @@
 
   function dbGetMovie($movieId) {
     $query = "SELECT * FROM Movie WHERE id=$movieId";
+    return dbRunQuery($query);
+  }
+
+  function dbGetMovieGenre($movieId) {
+    $query = "SELECT MovieGenre.genre FROM MovieGenre WHERE mid=$movieId";
+    return dbRunQuery($query);
+  }
+
+  function dbGetMovieDirector($movieId) {
+    $query = "SELECT d.first, d.last FROM Director d INNER JOIN MovieDirector md ON d.id=md.did WHERE md.mid=$movieId";
+    return dbRunQuery($query);
+  }
+
+  function dbGetMovieActors($movieId) {
+    $query = "SELECT a.*, ma.role FROM Actor a INNER JOIN MovieActor ma ON a.id = ma.aid WHERE ma.mid=$movieId";
+    return dbRunQuery($query);
+  }
+
+  function dbGetMovieReviews($movieId) {
+    $query = "SELECT * FROM Review WHERE mid = $movieId ORDER BY time desc";
+    return dbRunQuery($query);
   }
 
   function dbGetAllMovies() {
@@ -167,21 +188,19 @@
     return dbRunQuery($query);
   }
 
-  function dbGetGenre($movieId) {
-    $query = "SELECT MovieGenre.genre FROM MovieGenre WHERE mid=$movieId";
-  }
-
   function dbGetActor($actorId) {
     $query = "SELECT * FROM Actor WHERE id=$actorId";
+    return dbRunQuery($query);
+  }
+
+  function dbGetActorMovies($actorId) {
+    $query = "SELECT m.*, ma.role FROM Movie m INNER JOIN MovieActor ma ON m.id = ma.mid WHERE ma.aid=$actorId";
+    return dbRunQuery($query);
   }
 
   function dbGetAllActors() {
     $query = "SELECT Actor.id, CONCAT_WS(' ', Actor.first, Actor.last) AS name, Actor.dob FROM Actor ORDER BY Actor.first";
     return dbRunQuery($query);
-  }
-
-  function dbGetDirector($movieId) {
-    $query = "SELECT first, last FROM MovieDirector md, Director d WHERE mid=$movieId and d.id=md.did";
   }
 
   function dbGetAllDirectors() {
@@ -190,8 +209,58 @@
   }
 
 
-  function dbSearch() {
+  function dbSearchActor($search) {
+    $query = "SELECT * FROM Actor WHERE ";
 
+    $firstEntry = TRUE;
+    foreach($search as $data) {
+      if($firstEntry) {
+        $query .= "(first LIKE '%$data%' OR last LIKE '%$data%')";
+        $firstEntry = FALSE;
+      } else {
+        $query .= " AND (first LIKE '%$data%' OR last LIKE '%$data%')";
+      }
+    }
+
+    return dbRunQuery($query);
+  }
+
+  function dbSearchMovie($search) {
+    $query = "SELECT * FROM Movie WHERE ";
+
+    foreach($search as $data) {
+      if($firstEntry) {
+        $query .= "title LIKE '%$data%'";
+        $firstEntry = FALSE;
+      } else {
+        $query .= "AND title LIKE '%$data%'";
+      }
+    }
+
+    return dbRunQuery($query);
+  }
+
+  function dbSearch($input) {
+    $searchData = $input["searchInput"];
+    if(empty($searchData)) {
+      return array("data" => NULL,
+                   "err" => array());  // Empty search box
+    }
+
+    // Parse the input string
+    $constraints = preg_split("/[\s]+/", $searchData);  // need to use mysql_real_escape_string()
+
+    if(empty($constraints)) {
+      return array("data" => NULL,
+                   "err" => array());  // Empty search box
+    }
+
+    $actors = dbSearchActor($constraints);
+    $movies = dbSearchMovie($constraints);
+
+    return array("data" => array("actors" => $actors["data"],
+                                 "movies" => $movies["data"]),
+                 "err" => array_merge($actors["err"], $movies["err"]));
   }
 
 ?>
