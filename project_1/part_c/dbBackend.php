@@ -169,17 +169,22 @@
   }
 
   function dbGetMovieDirector($movieId) {
-    $query = "SELECT d.first, d.last FROM Director d INNER JOIN MovieDirector md ON d.id=md.did WHERE md.mid=$movieId";
+    $query = "SELECT CONCAT_WS(' ', d.first, d.last) AS name FROM Director d INNER JOIN MovieDirector md ON d.id=md.did WHERE md.mid=$movieId";
     return dbRunQuery($query);
   }
 
   function dbGetMovieActors($movieId) {
-    $query = "SELECT a.*, ma.role FROM Actor a INNER JOIN MovieActor ma ON a.id = ma.aid WHERE ma.mid=$movieId";
+    $query = "SELECT a.id, CONCAT_WS(' ', a.first, a.last) AS name, ma.role FROM Actor a INNER JOIN MovieActor ma ON a.id = ma.aid WHERE ma.mid=$movieId";
     return dbRunQuery($query);
   }
 
   function dbGetMovieReviews($movieId) {
     $query = "SELECT * FROM Review WHERE mid = $movieId ORDER BY time desc";
+    return dbRunQuery($query);
+  }
+
+  function dbGetMovieAverageRating($movieId) {
+    $query = "SELECT AVG(rating) AS avgScore FROM Review WHERE mid = $movieId";
     return dbRunQuery($query);
   }
 
