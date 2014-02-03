@@ -77,7 +77,7 @@
         echo '<h2>' . $row['title'] . '</h2>' . PHP_EOL;
 
         echo '<table border="1" cellpadding="5" cellspacing="15"><tr>' . PHP_EOL;
-        echo '<td>' . PHP_EOL;
+        echo '<td valign="top">' . PHP_EOL;
         foreach($row as $key => $value) {
           if($key == 'id') {
             continue;

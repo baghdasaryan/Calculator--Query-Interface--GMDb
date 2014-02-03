@@ -230,7 +230,7 @@
 
 
   function dbSearchActor($search) {
-    $query = "SELECT * FROM Actor WHERE ";
+    $query = "SELECT id, CONCAT_WS(' ', first, last) AS name, dob FROM Actor WHERE ";
 
     $firstEntry = TRUE;
     foreach($search as $data) {
@@ -246,8 +246,9 @@
   }
 
   function dbSearchMovie($search) {
-    $query = "SELECT * FROM Movie WHERE ";
+    $query = "SELECT id, title FROM Movie WHERE ";
 
+    $firstEntry = TRUE;
     foreach($search as $data) {
       if($firstEntry) {
         $query .= "title LIKE '%$data%'";
