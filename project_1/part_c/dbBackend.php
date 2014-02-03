@@ -65,15 +65,30 @@
 
     if($identity == "actor") {
       $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      $qResult = dbRunQuery($query);
+      if(!$qResult["data"]) {
+        return $qResult;
+      }
     } elseif ($identity == "director") {
       $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      $qResult = dbRunQuery($query);
+      if(!$qResult["data"]) {
+        return $qResult;
+      }
+    } elseif ($identity == "actor&director") {
+      $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      $qResult = dbRunQuery($query);
+      if(!$qResult["data"]) {
+        return $qResult;
+      }
+      $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      $qResult = dbRunQuery($query);
+      if(!$qResult["data"]) {
+        return $qResult;
+      }
     } else {
       return array("data" => NULL,
                    "err" => array("No Identity information was provided."));
-    }
-    $qResult = dbRunQuery($query);
-    if(!$qResult["data"]) {
-      return $qResult;
     }
     $retValue = $qResult;
 

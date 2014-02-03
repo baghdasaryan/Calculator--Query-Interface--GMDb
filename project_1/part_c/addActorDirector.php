@@ -17,7 +17,8 @@
           <td>Identity:</td>
           <td>
             <label><input type="radio" name="identity" value="actor" checked="true" onclick="document.getElementById('submitBtn').value='Add Actor'">Actor</input></label>
-            <label><input type="radio" name="identity" value="director" onclick="document.getElementById('submitBtn').value='Add Director'">Director</input></label>
+            <label><input type="radio" name="identity" value="director" onclick="document.getElementById('submitBtn').value='Add Director'">Director</input></label><br />
+            <label><input type="radio" name="identity" value="actor&director" onclick="document.getElementById('submitBtn').value='Add Actor and Director'">Actor and Director</input></label>
           </td>
         </tr><tr>
           <td>First Name:</td>
