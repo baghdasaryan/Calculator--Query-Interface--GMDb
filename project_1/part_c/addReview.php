@@ -4,6 +4,8 @@
     <?php
       include('./utils.php');
       include('./dbBackend.php');
+
+      $movieId = $_GET["id"];
     ?>
   </head>
 
@@ -24,7 +26,8 @@
               if($qResult["data"]) {
                 echo '<select name="movie">' . PHP_EOL;
                 while($row = mysql_fetch_row($qResult["data"])) {
-                  echo '<option value="' . $row[0] . '">' . $row[1] . ' (' . $row[2] . ')' . '</option>' . PHP_EOL;
+                  $selected = ($row[0] == $movieId)? 'selected' : '';
+                  echo '<option value="' . $row[0] . '"' . $selected . '>' . $row[1] . ' (' . $row[2] . ')' . '</option>' . PHP_EOL;
                 }
                 echo '</select>' . PHP_EOL;
               } else {
@@ -53,7 +56,7 @@
     </form>
 
     <?php
-      if(!empty($_GET)) {
+      if(!empty($_GET) && !is_null($_GET["name"])) {
         $qResult = dbAddReview($_GET);
         if($qResult["data"]) {
           echo "Success";

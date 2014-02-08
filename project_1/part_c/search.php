@@ -31,7 +31,7 @@
           $actors = $qResult["data"]["actors"];
           $movies = $qResult["data"]["movies"];
 
-          if(mysql_num_rows($actors) == 0 || mysql_num_rows($movies) == 0) {
+          if(False /*mysql_num_rows($actors) == 0 || mysql_num_rows($movies) == 0*/) {
             echo 'Your search - <b>' . $_GET["searchInput"] . '</b> - did not match any data.' . PHP_EOL;
             echo 'Suggestions:' . PHP_EOL;
             echo '<ul>' . PHP_EOL;

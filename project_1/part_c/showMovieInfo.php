@@ -65,7 +65,7 @@
 
     <?php
       if($noId == True) {
-        echo '<h2>Please provide an actor ID to view corresponding info.</h2>' . PHP_EOL;
+        echo '<h2>Please provide a movie ID to view corresponding info.</h2>' . PHP_EOL;
       }
     ?>
 
@@ -123,21 +123,36 @@
           echo '</table>' . PHP_EOL;
         }
         echo '</td>' . PHP_EOL;
-        echo '</tr></table>' . PHP_EOL;
-      }
+        echo '</tr></table></br>' . PHP_EOL;
 
-      // Reviews
-      echo '<h3>Reviews</h3>';
-      if($reviews) {
-        // Get movie average rating
-        $qResult = dbGetMovieAverageRating($movieId);
-        if($qResult["data"]) {
-          $res = $qResult["data"];
-        } else {
-          $errors[] = $qResult["err"];
+        // Reviews
+        echo '<button onclick="location.href=\'addReview.php?id=' . $movieId . '\'">Add a Review</button>' . PHP_EOL;
+        if($reviews) {
+          echo '<h3>Reviews:</h3>' . PHP_EOL;
+          $qResult = dbGetMovieAverageRating($movieId);
+          if($qResult["data"]) {
+            $res = $qResult["data"];
+          } else {
+            $errors[] = $qResult["err"];
+          }
+          $score = mysql_fetch_assoc($res);
+          echo 'Average Score: ' . round($score['avgScore'], 2) . '<br /><br />' . PHP_EOL;
+
+          if(mysql_num_rows($reviews) > 0) {
+            echo '<table border="1" cellpadding="3" cellspacing="5">' . PHP_EOL;
+            while($row = mysql_fetch_assoc($reviews)) {
+              echo '<tr><th><table align="left">' . PHP_EOL;
+              echo '<tr align="left"><th>Date:</th><td>' . $row['time'] . '</td></tr>' . PHP_EOL;
+              echo '<tr align="left"><th>Name:</th><td>' . $row['name'] . '</td></tr>' . PHP_EOL;
+              echo '<tr align="left"><th>Rating:</th><td>' . $row['rating'] . '</td></tr>' . PHP_EOL;
+              echo '<tr align="left"><th>Comment:</th><td>' . $row['comment'] . '</td></tr>' . PHP_EOL;
+              echo '</table></td></tr>' . PHP_EOL;
+            }
+            echo '</table>' . PHP_EOL;
+          }
+
+          $qResult = dbGetMovieAverageRating($movieId);
         }
-        $score = mysql_fetch_assoc($res);
-        echo 'Average Score: ' . round($score['avgScore'], 2);
       }
     ?>
 

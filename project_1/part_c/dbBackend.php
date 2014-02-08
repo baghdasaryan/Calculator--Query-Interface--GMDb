@@ -194,7 +194,7 @@
   }
 
   function dbGetMovieReviews($movieId) {
-    $query = "SELECT * FROM Review WHERE mid = $movieId ORDER BY time desc";
+    $query = "SELECT * FROM Review WHERE mid = $movieId ORDER BY time DESC";
     return dbRunQuery($query);
   }
 
