@@ -269,7 +269,7 @@
     }
 
     // Parse the input string
-    $constraints = preg_split("/[\s]+/", $searchData);  // need to use mysql_real_escape_string()
+    $constraints = preg_split("/[\s]+/", mysql_escape_string($searchData));
 
     if(empty($constraints)) {
       return array("data" => NULL,
