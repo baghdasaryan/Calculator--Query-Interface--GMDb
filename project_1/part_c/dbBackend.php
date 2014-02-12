@@ -53,7 +53,7 @@
     $last = $input["last"];
     $sex = $input["sex"];
     $dob = $input["dob"];
-    $dod = $input["dod"];
+    $dod = $input["dod"]  == "" ? NULL : $input["dod"];
 
     $query = "SELECT id FROM MaxPersonID";
     $qResult = dbRunQuery($query);
@@ -64,24 +64,40 @@
     $id = $data[0] + 1;
 
     if($identity == "actor") {
-      $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      if(is_null($dod)) {
+        $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', NULL)";
+      } else {
+        $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      }
       $qResult = dbRunQuery($query);
       if(!$qResult["data"]) {
         return $qResult;
       }
     } elseif ($identity == "director") {
-      $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      if(is_null($dod)) {
+        $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', NULL)";
+      } else {
+        $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      }
       $qResult = dbRunQuery($query);
       if(!$qResult["data"]) {
         return $qResult;
       }
     } elseif ($identity == "actor&director") {
-      $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      if(is_null($dod)) {
+        $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', NULL)";
+      } else {
+        $query = "INSERT INTO Actor VALUES ($id, '$last', '$first', '$sex', '$dob', '$dod')";
+      }
       $qResult = dbRunQuery($query);
       if(!$qResult["data"]) {
         return $qResult;
       }
-      $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      if(is_null($dod)) {
+        $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', NULL)";
+      } else {
+        $query = "INSERT INTO Director VALUES ($id, '$last', '$first', '$dob', '$dod')";
+      }
       $qResult = dbRunQuery($query);
       if(!$qResult["data"]) {
         return $qResult;
