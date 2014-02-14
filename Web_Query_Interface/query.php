@@ -40,7 +40,7 @@
         if(!$err) {
           echo '<h3>Results from MySQL:</h3>' . PHP_EOL;
 
-          $db_connection = mysql_connect("localhost", "cs143", "");
+          $db_connection = mysql_connect("localhost", "<LOGIN>", "<PASSWORD>");
           if(!$db_connection) {
             $errmsg = mysql_error($db_connection);
             echo 'Connection failed: ' . $errmsg;
@@ -49,7 +49,7 @@
         }
 
         if(!$err) {
-          $db_selected = mysql_select_db("CS143", $db_connection);
+          $db_selected = mysql_select_db("OnlineDB", $db_connection);
           if(!$db_selected) {
             $errmsg = mysql_error($db_selected);
             echo 'Failed to select a database: ' . $errmsg;

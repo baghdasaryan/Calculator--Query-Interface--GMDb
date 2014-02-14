@@ -1,5 +1,5 @@
-Web Query Interface
-===================
+GMDb - Movie Database
+=====================
 
 Contributors:
 -------------
@@ -148,36 +148,3 @@ MaxMovieID(id)
 | ---- | ---- | -----------                   |
 | id   | INT  | Max ID assigned to all movies |
 
-Web Query Interface
--------------------
-After loading data in the tables specified above, you can use *query.php* page that
-allows users to type in a SQL SELECT statement in a text input box and submit
-the query through a Web browser. Given a user query, your php code executes the
-query on MySQL and returns the results as the results page in an HTML table.
-To make this part of project manageable, for this part (and this part only) you
-may assume that users will always issue correct SELECT queries and all user
-inputs can be trusted.
-
-Usage
------
-1. Create schemas mentioned above or any other schemas in a MySQL database named
-   *OnlineDB*.
-2. Go to **line 43** in *query.php* and change **<LOGIN>** to your database
-   login and <PASSWORD> to the password of your database.
-3. In case if your database is not on running on the same machine where your
-   *query.php* is located - change **"localhost"** to **"<ip-address>"** where
-   _<ip-address>_ is the [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki")
-   of the machine at which your database resides. This change should be made on
-   **line 43** in *query.php*.
-4. Place *query.php* in your server's (e.g. Apache) root directory.
-5. Now you can access the program by going to **_<ip-address>_/query.php**,
-   where _<ip-address>_ is your server's [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki").
-
-Notes
------
-* Why implementing *query.php* we assumed that the users will always issue
-correct SELECT queries and all user inputs can be trusted.
-* You need to have installed:
-..* [Apache](http://httpd.apache.org/ "Apache") or any other server
-..* [PHP](http://php.net/ "PHP")
-..* [MySQL](http://www.mysql.com/ "MySQL")
