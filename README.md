@@ -1,4 +1,4 @@
 Calculator--Query-Interface--GMDb
 =================================
 
-FIXME
+Please see project-specific README.md files (located inside project folders).
