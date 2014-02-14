@@ -178,6 +178,6 @@ Notes
 * Why implementing *query.php* we assumed that the users will always issue
 correct SELECT queries and all user inputs can be trusted.
 * You need to have installed:
-..* [Apache](http://httpd.apache.org/ "Apache") or any other server
-..* [PHP](http://php.net/ "PHP")
-..* [MySQL](http://www.mysql.com/ "MySQL")
+    * [Apache](http://httpd.apache.org/ "Apache") or any other server
+    * [PHP](http://php.net/ "PHP")
+    * [MySQL](http://www.mysql.com/ "MySQL")
