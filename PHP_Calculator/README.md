@@ -26,12 +26,12 @@ W3C.
 Usage
 -----
 1. Place *calculator.php* in your server's (e.g. Apache) root directory.
-2. Now you can access the program by going to **_<ip-address>_/calculator.php**,
-where _<ip-address>_ is your server's [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki").
+2. Now you can access the program by going to **_\<ip-address\>_/calculator.php**,
+where _\<ip-address\>_ is your server's [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki").
 
 Notes
 -----
 * You need to have installed:
-..* [Apache](http://httpd.apache.org/ "Apache") or any other server
-..* [PHP](http://php.net/ "PHP")
+    * [Apache](http://httpd.apache.org/ "Apache") or any other server
+    * [PHP](http://php.net/ "PHP")
 

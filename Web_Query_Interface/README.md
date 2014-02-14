@@ -162,16 +162,16 @@ Usage
 -----
 1. Create schemas mentioned above or any other schemas in a MySQL database named
    *OnlineDB*.
-2. Go to **line 43** in *query.php* and change **<LOGIN>** to your database
-   login and <PASSWORD> to the password of your database.
+2. Go to **line 43** in *query.php* and change **\<LOGIN\>** to your database
+   login and \<PASSWORD\> to the password of your database.
 3. In case if your database is not on running on the same machine where your
-   *query.php* is located - change **"localhost"** to **"<ip-address>"** where
-   _<ip-address>_ is the [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki")
+   *query.php* is located - change **"localhost"** to **"\<ip-address\>"** where
+   _\<ip-address\>_ is the [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki")
    of the machine at which your database resides. This change should be made on
    **line 43** in *query.php*.
 4. Place *query.php* in your server's (e.g. Apache) root directory.
-5. Now you can access the program by going to **_<ip-address>_/query.php**,
-   where _<ip-address>_ is your server's [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki").
+5. Now you can access the program by going to **_\<ip-address\>_/query.php**,
+   where *\<ip-address\>* is your server's [IP address](http://en.wikipedia.org/wiki/IP_address "IP Address Wiki").
 
 Notes
 -----
