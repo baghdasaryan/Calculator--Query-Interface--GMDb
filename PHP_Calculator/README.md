@@ -19,9 +19,9 @@ numbers.
 4. The calculator.php is more like a question-answering interface, and
 therefore HTTP GET protocol was used to process the user input as suggested by
 W3C.
-5. Calculator detects division by zero using regular expressions.
-6. White spaces treated as empty characters.
-7. Every two consecutive minus (--) signs treated as a plus sign (+).
+5. Calculator utilizes regular expressions to detect divisions by zero.
+6. White spaces are treated as empty characters.
+7. Every two consecutive minus (**--**) signs are treated as a plus sign (**+**).
 
 Usage
 -----
