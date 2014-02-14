@@ -1,13 +1,18 @@
-Name:  Georgi Baghdasaryan
-SID:   603 875 284
-Email: baghdasaryan@ucla.edu
+PHP Web Calculator
+==================
 
-Name:  Michael Sweatt
-SID:   604 216 994
-Email: mickeysweatt@engineering.ucla.edu
+Contributors:
+-------------
+Name | Email
+--- | ---
+Georgi Baghdasaryan | baghdasaryan@ucla.edu  
+Michael Sweatt | mickeysweatt@engineering.ucla.edu
 
-Extra stuff:
+Project Description
+-------------------
+
+
+###Additional Features:
   * Detection of division by zero using regular expressions.
   * White spaces treated as empty characters.
   * Every two consecutive minus (--) signs treated as a plus sign (+).
-
