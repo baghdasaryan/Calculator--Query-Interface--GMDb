@@ -2,6 +2,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>GMDb - Movie Database</title>
+    <link rel="shortcut icon" href="assets/gmdb_logo.png">
     <?php
       include('./utils.php');
       include('./dbBackend.php');
