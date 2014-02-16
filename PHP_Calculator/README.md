@@ -8,8 +8,10 @@ Contributors:
 | Georgi Baghdasaryan | baghdasaryan@ucla.edu             |
 | Michael Sweatt      | mickeysweatt@engineering.ucla.edu |
 
-Project Specification
----------------------
+Project Description
+-------------------
+A simple online calculator implemented in PHP.
+
 1. Calculator supports +, -, * and / operators and the evaluation of the input
 follows the standard operator precedence (i.e., the operators are
 left-associative and + and * operators have precedence over + and -).
