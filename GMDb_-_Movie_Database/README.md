@@ -8,6 +8,19 @@ Contributors:
 | Georgi Baghdasaryan | baghdasaryan@ucla.edu             |
 | Michael Sweatt      | mickeysweatt@engineering.ucla.edu |
 
+Project Description
+-------------------
+ Have you heard about Amazon's [IMDb](http://www.imdb.com/ "IMDb's Homepage")?
+ If yes, than you pretty much know what this project is about. If not, I would
+ recommend checking out [IMDb](http://www.imdb.com/ "IMDb's Homepage"). IMDb
+ is pretty much a website connected to a database (or a bunch of databases)
+ that, upon your searches/requests, queries the database, pulls data and
+ presents it in a nice way.
+
+ In this project, we tried to create a website similar to IMDb. We did our best
+ to write as clear ans as easy to understand code as possible, so feel free to
+ read through the code in case you are interested in how our program works.
+
 Description of Table Schemas
 ----------------------------
 The Movie table: This table describes information regarding movies in the
@@ -137,10 +150,12 @@ value of the tuple by one, and assigns the increased ID value to the new
 actor/director. You may treat this MaxPersonID table as a "persistent variable"
 that remembers its value even after your program stops.
 
-The MaxMovieID is used similarly to assign a new ID to a new movie inserted by
-the user. As a new movie is added to the database, the entry in this table is
-incremented and assigned to the new movie. The schema of the MaxMovieID table is
-given as follow:
+*MaxMovieID(id)*
+
+The MaxMovieID is used similarly to MaxPersonID, it assigns a new ID to a new
+movie inserted by the user. As a new movie is added to the database, the entry
+in this table is incremented and assigned to the new movie. The schema of the
+MaxMovieID table is as follow:
 
 MaxMovieID(id)
 
